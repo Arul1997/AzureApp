@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goodbye Varshine ❤️</title>
+  <title>Goodbye Varshini ❤️</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap');
 
@@ -27,6 +27,7 @@
       font-size: 4rem;
       margin: 0;
       animation: fadeIn 2s ease forwards;
+      text-shadow: 0 0 10px #ff4081;
     }
 
     h2 {
@@ -48,6 +49,7 @@
       font-size: 3rem;
       color: #ff4081;
       animation: beat 1s infinite;
+      text-shadow: 0 0 5px #ff6b81;
     }
 
     @keyframes beat {
@@ -68,27 +70,66 @@
       height: 20px;
       background-image: url('https://i.postimg.cc/yYcnh0BK/flower.png');
       background-size: cover;
-      animation: fall linear infinite;
+      animation: fall linear infinite, sway ease-in-out infinite;
     }
 
     @keyframes fall {
       0% { transform: translateY(0) rotate(0deg); }
       100% { transform: translateY(110vh) rotate(360deg); }
     }
+
+    @keyframes sway {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(15px); }
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: absolute;
+      font-size: 1.5rem;
+      color: #ff4081;
+      animation: floatHeart 4s ease-in-out infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(0.8); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
+    }
+
+    /* Fun Phrase Animation */
+    .fun-phrase {
+      position: fixed;
+      bottom: 50px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff4081;
+      animation: bounce 2s infinite;
+      text-shadow: 0 0 10px #ffb6c1;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Goodbye Varshine <span class="heart">❤️</span></h1>
+  <h1>Goodbye Varshini <span class="heart">❤️</span></h1>
   <h2>My Sister at Work</h2>
-  <p>Thank you for everything, Varshine.<br>
+  <p>Thank you for everything, Varshini.<br>
      Your laughter, support, and kindness made work feel like family.<br>
      I already miss you so much and will always cherish our memories together.<br>
      Wherever life takes you, my best wishes follow you!</p>
 
+  <!-- Fun phrase at bottom -->
+  <div class="fun-phrase">Varshini Varshini Loosu Paya Varshini 😂</div>
+
   <script>
     // Create raining flowers
-    const flowerCount = 60; // Number of flowers raining
+    const flowerCount = 60;
     for (let i = 0; i < flowerCount; i++) {
       const flower = document.createElement('div');
       flower.classList.add('flower');
@@ -97,17 +138,29 @@
       flower.style.left = Math.random() * window.innerWidth + 'px';
 
       // Random size
-      const size = 10 + Math.random() * 20; // 10px to 30px
+      const size = 10 + Math.random() * 25; // 10px to 35px
       flower.style.width = flower.style.height = size + 'px';
 
       // Random falling speed
       const duration = 3 + Math.random() * 5; // 3s to 8s
       flower.style.animationDuration = duration + 's';
 
-      // Random delay so they don’t fall all together
+      // Random delay
       flower.style.animationDelay = Math.random() * 5 + 's';
 
       document.body.appendChild(flower);
+    }
+
+    // Create floating hearts
+    const heartCount = 20;
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      heart.style.animationDelay = Math.random() * 4 + 's';
+      document.body.appendChild(heart);
     }
   </script>
 
